@@ -9,6 +9,12 @@ This port is one program with one code base, and the connection type is chosen a
 It runs on Windows, Linux and macOS, and it adds a headless command-line logger and a built-in
 34401A simulator.
 
+> **Credit:** the design, feature set, SCPI command sequences and file formats come from the
+> original project by **Nirav Patel** ([@Niravk1997](https://github.com/Niravk1997)):
+> <https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software>.
+> This repository is an independent translation of that work to Python under its MIT licence.
+> See [Credits and licence](#credits-and-licence).
+
 ## Features
 
 | Area | What you get |
@@ -186,7 +192,28 @@ off-screen end-to-end GUI run.
 They have **not** been run against a physical 34401A. The SCPI traffic is copied from the original
 program, which was used with real meters.
 
-## Credits
+## Credits and licence
 
-* Original software and design: **Nirav Patel** ([Niravk1997](https://github.com/Niravk1997)), MIT.
-* AR488 adapter: [Twilight-Logic/AR488](https://github.com/Twilight-Logic/AR488).
+This project would not exist without the original work it is ported from.
+
+* **Original software:** *HP Agilent Keysight 34401A Control and Data Logging Software*
+  by **Nirav Patel** ([@Niravk1997](https://github.com/Niravk1997)), © 2021, MIT licence.
+  * Source: <https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software>
+  * Releases (Windows builds): <https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/releases>
+  * User manual: <https://github.com/Niravk1997/HP-Agilent-Keysight-34401A-Control-and-Data-Logging-Software/blob/main/User%20Manual/HP%2034401A%20Software%20User%20Manual.pdf>
+  * EEVblog forum thread: <https://www.eevblog.com/forum/testgear/hp-34401a-standalone-software/>
+* **What was taken from it:** the window structure and feature set, every SCPI command and the
+  order and timing in which they are sent, the response interpretation, the MIN/MAX/AVG and
+  moving-average algorithms, the statistics and math-waveform definitions, the log folder layout,
+  file names and timestamp format, and the `Settings.txt` format. The Python code itself was
+  rewritten from scratch; no C# source is included.
+* **This port:** © 2026 KZsolt81, released under the same MIT licence. Both copyright notices are
+  in [LICENSE](LICENSE).
+* **AR488 GPIB adapter firmware:** [Twilight-Logic/AR488](https://github.com/Twilight-Logic/AR488).
+* **Libraries:** [Qt for Python (PySide6)](https://doc.qt.io/qtforpython/),
+  [pyqtgraph](https://www.pyqtgraph.org/), [NumPy](https://numpy.org/),
+  [pySerial](https://github.com/pyserial/pyserial), [PyVISA](https://pyvisa.readthedocs.io/),
+  [pyttsx3](https://github.com/nateshmbhat/pyttsx3).
+
+HP, Agilent and Keysight are trademarks of their respective owners. This project is not affiliated
+with or endorsed by them or by the original author.
