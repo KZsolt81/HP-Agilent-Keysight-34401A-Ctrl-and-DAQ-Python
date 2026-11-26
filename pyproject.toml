@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hp34401a"
+version = "1.0.0"
+description = "Control and data-logging software for the HP / Agilent / Keysight 34401A multimeter (Python port)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["34401A", "multimeter", "DMM", "SCPI", "GPIB", "VISA", "RS-232", "data logging", "AR488"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Environment :: X11 Applications :: Qt",
+]
+dependencies = [
+    "numpy>=1.22",
+    "pyserial>=3.5",
+    "PySide6>=6.5",
+    "pyqtgraph>=0.13.3",
+]
+
+[project.optional-dependencies]
+visa = ["pyvisa>=1.12", "pyvisa-py>=0.7"]
+speech = ["pyttsx3>=2.90"]
+all = ["pyvisa>=1.12", "pyvisa-py>=0.7", "pyttsx3>=2.90"]
+test = ["pytest>=7"]
+
+[project.scripts]
+hp34401a-log = "hp34401a.cli:main"
+
+[project.gui-scripts]
+hp34401a = "hp34401a.gui.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
